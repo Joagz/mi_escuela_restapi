@@ -8,6 +8,7 @@ class MiAlumnoApiApplicationTests {
 
 	@Test
 	void contextLoads() {
+
 	}
 
 }

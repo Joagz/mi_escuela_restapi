@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
- class EscuelaNotFoundException extends Exception {
+class EscuelaNotFoundException extends RuntimeException {
 
     private String message;
 

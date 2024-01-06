@@ -11,14 +11,15 @@ import lombok.ToString;
 @Getter
 @Setter
 @NoArgsConstructor
-public class EscuelaQuery {
+class EscuelaQuery {
 
-    String jurisdiccion = "";
-    String localidad = "";
-    String cueAnexo = "";
-    String nombre = "";
-    String sector = "";
-    String ambito = "";
-    String numero = "";
+    String jurisdiccion = null;
+    String departamento = null;
+    String nombre = null;
+    String cue_anexo = null;
+    String localidad = null;
+    String sector = null;
+    String ambito = null;
+    String numero = null;
 
 }

@@ -7,23 +7,21 @@ import org.springframework.stereotype.Service;
 @Service
 class EscuelaServiceImpl implements EscuelaService {
 
-    private final EscuelaRepository repository;
+    private final EscuelaAutoRepository repository;
 
-    public EscuelaServiceImpl(EscuelaRepository repository) {
+
+    public EscuelaServiceImpl(EscuelaAutoRepository repository) {
         this.repository = repository;
     }
 
     @Override
     public Page<Escuela> findAll(EscuelaQuery query, int page) {
         Pageable pageable = Pageable.ofSize(10).withPage(page);
-        return repository.findByQuery(
-                query.jurisdiccion,
-                query.localidad,
-                query.cueAnexo,
-                query.nombre,
-                query.sector,
-                query.ambito,
-                query.numero, pageable);
+        var found = repository.findQuery(query, pageable);
+        if (found.getTotalElements() == 0) {
+            throw new EscuelaNotFoundException("Escuela no encontrada. \nParametros: %s".formatted(query.toString()));
+        }
+        return found;
     }
 
 }

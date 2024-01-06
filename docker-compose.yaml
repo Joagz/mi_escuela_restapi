@@ -1,0 +1,14 @@
+services:
+  mi-alumno-mysql-server:
+    container_name: mi_alumno_db
+    environment:
+      - "MYSQL_USER=test"
+      - "MYSQL_PASSWORD=test"
+      - "MYSQL_ROOT_PASSWORD=root"
+      - "MYSQL_DATABASE=mi_alumno_db"
+    ports:
+      - 5555:3306
+    image: mysql:latest
+    volumes:
+      - "./mi-alumno-mysql-config:/etc/mysql/conf.d"
+      - "./mi-alumno-mysql:/var/lib/mysql"

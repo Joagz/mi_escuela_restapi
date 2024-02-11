@@ -21,5 +21,6 @@ class EscuelaQuery {
     String sector = null;
     String ambito = null;
     String numero = null;
+    String index = null;
 
 }

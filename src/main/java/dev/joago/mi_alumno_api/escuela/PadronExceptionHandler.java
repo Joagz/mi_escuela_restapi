@@ -7,14 +7,15 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+
 @ControllerAdvice
- class EscuelaExceptionHandler extends ResponseEntityExceptionHandler {
+class EscuelaExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(value = {EscuelaNotFoundException.class})
     protected ResponseEntity<Object> handleConflict(
-            RuntimeException ex, WebRequest request) {
-        String bodyOfResponse = ex.getLocalizedMessage();
-        return new ResponseEntity<>(bodyOfResponse, HttpStatus.CONFLICT);
+            RuntimeException ex, WebRequest req) {
+        String message = ex.getLocalizedMessage();
+        return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
     }
 
 }
